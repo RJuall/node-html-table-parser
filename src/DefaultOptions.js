@@ -1,3 +1,4 @@
-export const options = {
-    "exportFormat": "JSONLines",
+const options = {
+    exportFormat: `JSONLines`,
 }
+module.exports = options;

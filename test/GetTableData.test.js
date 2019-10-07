@@ -1,0 +1,1 @@
+const getTableData = require(`../src/GetTableData`);
