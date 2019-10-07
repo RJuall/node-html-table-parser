@@ -1,9 +1,9 @@
-const IsInputUrlOrFilepath = require(`../src/IsInputUrlOrFilepath`);
+const IsInputString = require(`../src/IsInputString`);
 
 test(`Throw error on invalid input`, () => {
     let run = input => {
         expect(() => {
-            IsInputUrlOrFilepath(input);
+            IsInputString(input);
         }).toThrow(TypeError);
     };
     run([]);            // array
@@ -20,7 +20,7 @@ test(`Throw error on invalid input`, () => {
 test(`No error on valid input`, () => {
     let run = input => {
         expect(() => {
-            IsInputUrlOrFilepath(input);
+            IsInputString(input);
         }).not.toThrow(TypeError);
     };
     run(`String Input`);
