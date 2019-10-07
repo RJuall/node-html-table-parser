@@ -10,6 +10,7 @@ test(`Return false if input is not a http/https URL`, () => {
     run(`C:\\temp\\example\\folder\\file.html`);
     run(`\\\\relative\\path\\file.html`);
     run(`./file.html`);
+    run(`www.google.com this that`);
 });
 
 test(`Return true if input is a http/https URL`, () => {
