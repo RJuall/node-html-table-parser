@@ -1,9 +1,9 @@
-const IsInputString = require(`../src/IsInputString`);
+const validateStringInput = require(`../src/validateStringInput`);
 
 test(`Throw error on invalid input`, () => {
     let run = input => {
         expect(() => {
-            IsInputString(input);
+            validateStringInput(input);
         }).toThrow(TypeError);
     };
     run([]);            // array
@@ -20,7 +20,7 @@ test(`Throw error on invalid input`, () => {
 test(`No error on valid input`, () => {
     let run = input => {
         expect(() => {
-            IsInputString(input);
+            validateStringInput(input);
         }).not.toThrow(TypeError);
     };
     run(`String Input`);
