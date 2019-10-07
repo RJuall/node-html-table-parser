@@ -1,0 +1,19 @@
+{
+  "name": "html-table-parser",
+  "version": "0.1.0",
+  "description": "NPM package to parse html tables to various formats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RJuall/node-html-table-parser.git"
+  },
+  "author": "rjuall@visuallease.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RJuall/node-html-table-parser/issues"
+  },
+  "homepage": "https://github.com/RJuall/node-html-table-parser#readme"
+}
