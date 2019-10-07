@@ -1,7 +1,7 @@
 const validateInput = require(`../src/ValidateInput`);
 
 test(`Throw error on invalid input`, () => {
-    let run = (input, type) => {
+    const run = (input, type) => {
         expect(() => {
             validateInput(input, type);
         }).toThrow(TypeError);
@@ -18,7 +18,7 @@ test(`Throw error on invalid input`, () => {
 });
 
 test(`No error on valid input`, () => {
-    let run = input => {
+    const run = input => {
         expect(() => {
             validateInput(input, type);
         }).not.toThrow(TypeError);

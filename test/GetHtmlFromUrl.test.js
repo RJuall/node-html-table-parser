@@ -1,0 +1,1 @@
+const getHtmlFromUrl = require(`../src/GetHtmlFromUrl`);

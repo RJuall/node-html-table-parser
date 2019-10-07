@@ -1,7 +1,7 @@
 const IsInputUrl = require(`../src/IsInputUrl`);
 
 test(`Return false if input is not a http/https URL`, () => {
-    let run = input => {
+    const run = input => {
         expect(
             IsInputUrl(input)
         ).toBe(false);
@@ -14,7 +14,7 @@ test(`Return false if input is not a http/https URL`, () => {
 });
 
 test(`Return true if input is a http/https URL`, () => {
-    let run = input => {
+    const run = input => {
         expect(
             IsInputUrl(input)
         ).toBe(true);

@@ -2,7 +2,7 @@ const DoesHtmlHaveTable = require('../src/DoesHtmlHaveTable');
 const cheerio = require('cheerio');
 
 test(`Return false if no table in provided cheerio/html object`, () => {
-    let run = cheerio => {
+    const run = cheerio => {
         expect(
             DoesHtmlHaveTable(cheerio)
         ).toBe(false);
@@ -13,7 +13,7 @@ test(`Return false if no table in provided cheerio/html object`, () => {
 });
 
 test(`Return true if table(s) exist in provided cheerio/html object`, () => {
-    let run = cheerio => {
+    const run = cheerio => {
         expect(
             DoesHtmlHaveTable(cheerio)
         ).toBe(true);
