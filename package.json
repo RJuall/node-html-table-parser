@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/RJuall/node-html-table-parser/issues"
   },
-  "homepage": "https://github.com/RJuall/node-html-table-parser#readme"
+  "homepage": "https://github.com/RJuall/node-html-table-parser#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
