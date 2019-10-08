@@ -35,3 +35,15 @@ test(`Return 400 given invalid URL input`, () => {
             expect(data.toString()).toMatch(/400$/);
         });
 });
+
+test(`Return 500 when returned HTTP 500x status code`, () => {
+    nock(`https://www.fakewebsite.com`)
+      .get(`/broken-service.html`)
+      .reply(500);
+
+    return getHtmlFromUrl(`https://www.fakewebsite.com/broken-service.html`)
+      .then(data => { throw new Error(`Test failed.`) })
+      .catch(data => {
+          expect(data.toString()).toMatch(/500$/);
+      });
+});
