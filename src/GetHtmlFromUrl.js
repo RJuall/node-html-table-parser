@@ -1,18 +1,21 @@
 const axios = require(`axios`);
 
-function getHtmlFromUrl(path) {
-    axios.get(path)
-      .then(res => {
-        return res.data;
-      })
-      .catch(err => {
-          if (err.response) {
-            throw new Error(`HTTP Error Status - ${err.response.status}`);
-          } else if (err.request) {
-            throw new Error(`Error - ${err.request}`);
-          } else {
-            throw new Error(`Error - ${err.message}`);
-          }
-      });
+async function getHtmlFromUrl(path) {
+    return new Promise((resolve, reject) => {
+        axios
+            .get(path)
+            .then(res => {
+                resolve(res.data);
+            })
+            .catch(err => {
+                if (err.response) {
+                    reject(new Error(`HTTP Error Status - ${err.response.status}`));
+                } else if (err.request) {
+                    reject(new Error(`Error - ${err.request}`));
+                } else {
+                    reject(new Error(`Error - ${err.message}`));
+                }
+            });
+        });
 }
 module.exports = getHtmlFromUrl;

@@ -1,6 +1,15 @@
 const getHtmlFromUrl = require(`../src/GetHtmlFromUrl`);
-const mockAxios = require('axios');
+const nock = require(`nock`);
 
-test(`Placeholder test`, () => {
-    expect(true).toBe(true);
+afterAll(nock.restore);
+afterEach(nock.cleanAll);
+
+test(`Return html data given a well-formed request`, async () => {
+    nock(`https://google.com`)
+      .get(`/`)
+      .reply(200, `<html></html>`);
+    
+    return getHtmlFromUrl(`https://google.com/`).then(data => {
+        expect(data).toBe(`<html></html>`);
+    });
 });
