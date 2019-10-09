@@ -7,7 +7,7 @@ const getHtmlFromFilepath = require(`./GetHtmlFromFilepath`);
 const minifyHtml = require(`./MinifyHtml`);
 const isHtml = require(`./IsHtml`);
 
-function getTableData(path, options) {
+function getTableDataAsRowArrays(path, options) {
     
     const html = isInputUrl(path) ? getHtmlFromUrl(path) : getHtmlFromFilepath(path);
 
@@ -15,5 +15,7 @@ function getTableData(path, options) {
     const $ = cheerio.load(minifyHtml(html));
 
     if (!doesHtmlHaveTableRows($)) return new Error(`Parse Error - No HTML table found`);
+
+    const tables = $('table').get();
 }
-module.exports = getTableData;
+module.exports = getTableDataAsRowArrays;

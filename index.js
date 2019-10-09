@@ -1,7 +1,7 @@
 const validateInput = require(`./src/ValidateInput`);
 const options = require(`./src/DefaultOptions`);
 
-const getTableData = require(`./src/GetTableData`);
+const getTableDataAsRowArrays = require(`./src/GetTableDataAsRowArrays`);
 
 function tableParse (htmlPath, opt) {
     validateInput(htmlPath, `string`);
@@ -10,11 +10,11 @@ function tableParse (htmlPath, opt) {
         Object.assign(options, opt);
     }
 
-    const tableData = getTableData(htmlPath, options);
+    const tableData = getTableDataAsRowArrays(htmlPath, options);
     
-    console.log(htmlPath);
-    console.log(opt);
-    console.log(options);
+    // console.log(htmlPath);
+    // console.log(opt);
+    // console.log(options);
 
     return true;
 }
