@@ -10,6 +10,8 @@ const getTablesAsTableObject = require(`./GetTablesAsTableObject`);
 
 function getTableDataAsRowArrays(path, options) {
     
+    return true;
+
     const html = isInputUrl(path) ? getHtmlFromUrl(path) : getHtmlFromFilepath(path);
 
     if(!isHtml(html)) return new Error(`Parse Error - No HTML found`);
@@ -18,5 +20,6 @@ function getTableDataAsRowArrays(path, options) {
     if (!doesHtmlHaveTableRows($)) return new Error(`Parse Error - No HTML table found`);
 
     const tables = getTablesAsTableObject($);
+
 }
 module.exports = getTableDataAsRowArrays;

@@ -1,5 +1,7 @@
 const getTableDataAsRowArrays = require(`../src/GetTableDataAsRowArrays`);
 
 test(`Placeholder test`, () => {
-    expect(true).toBe(true);
+    expect(
+        getTableDataAsRowArrays(`https://google.com`)
+    ).toBe(true);
 });

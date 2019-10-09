@@ -18,4 +18,5 @@ test(`Return table(s) as a table object`, () => {
     run(sampleHtmlDocument, oneTableObject);
     run(completeHtmlTable, oneTableObject);
     run(`${completeHtmlTable}${completeHtmlTable}`, { 0: `${completeHtmlTable}`, 1: `${completeHtmlTable}` });
+    run(htmlDocNoTable, {});
 });
