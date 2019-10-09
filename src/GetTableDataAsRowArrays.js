@@ -9,11 +9,11 @@ const isHtml = require(`./IsHtml`);
 const getTablesAsTableObject = require(`./GetTablesAsTableObject`);
 const splitAllTablesIntoRowArrays = require(`./SplitAllTablesIntoRowArrays`);
 
-function getTableDataAsRowArrays(path, options) {
+async function getTableDataAsRowArrays(path) {
     
-    return true;
-
-    const html = isInputUrl(path) ? getHtmlFromUrl(path) : getHtmlFromFilepath(path);
+    const html = isInputUrl(path) 
+        ? await getHtmlFromUrl(path) 
+        : getHtmlFromFilepath(path);
 
     if(!isHtml(html)) return new Error(`Parse Error - No HTML found`);
     const $ = cheerio.load(minifyHtml(html));

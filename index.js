@@ -10,7 +10,7 @@ function tableParse (htmlPath, opt) {
         Object.assign(options, opt);
     }
 
-    const tableData = getTableDataAsRowArrays(htmlPath, options);
+    const tableData = getTableDataAsRowArrays(htmlPath);
     
     // console.log(htmlPath);
     // console.log(opt);
