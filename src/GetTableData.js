@@ -1,7 +1,7 @@
 const cheerio = require(`cheerio`);
 
 const isInputUrl = require(`./IsInputUrl`);
-const doesHtmlHaveTable = require(`./DoesHtmlHaveTable`);
+const doesHtmlHaveTableRows = require(`./DoesHtmlHaveTableRows`);
 const getHtmlFromUrl = require(`./GetHtmlFromUrl`);
 const getHtmlFromFilepath = require(`./GetHtmlFromFilepath`);
 const minifyHtml = require(`./MinifyHtml`);
@@ -14,6 +14,6 @@ function getTableData(path, options) {
     if(!isHtml(html)) return new Error(`Parse Error - No HTML found`);
     const $ = cheerio.load(minifyHtml(html));
 
-    if (!doesHtmlHaveTable($)) return new Error(`Parse Error - No HTML table found`);
+    if (!doesHtmlHaveTableRows($)) return new Error(`Parse Error - No HTML table found`);
 }
 module.exports = getTableData;
