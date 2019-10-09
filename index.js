@@ -15,5 +15,7 @@ function tableParse (htmlPath, opt) {
     console.log(htmlPath);
     console.log(opt);
     console.log(options);
+
+    return true;
 }
 module.exports = tableParse;
