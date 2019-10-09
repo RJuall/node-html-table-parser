@@ -7,6 +7,7 @@ const getHtmlFromFilepath = require(`./GetHtmlFromFilepath`);
 const minifyHtml = require(`./MinifyHtml`);
 const isHtml = require(`./IsHtml`);
 const getTablesAsTableObject = require(`./GetTablesAsTableObject`);
+const splitAllTablesIntoRowArrays = require(`./SplitAllTablesIntoRowArrays`);
 
 function getTableDataAsRowArrays(path, options) {
     
@@ -21,5 +22,6 @@ function getTableDataAsRowArrays(path, options) {
 
     const tables = getTablesAsTableObject($);
 
+    return splitAllTablesIntoRowArrays(tables);
 }
 module.exports = getTableDataAsRowArrays;
