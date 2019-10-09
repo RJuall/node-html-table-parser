@@ -6,6 +6,7 @@ const getHtmlFromUrl = require(`./GetHtmlFromUrl`);
 const getHtmlFromFilepath = require(`./GetHtmlFromFilepath`);
 const minifyHtml = require(`./MinifyHtml`);
 const isHtml = require(`./IsHtml`);
+const getTablesAsTableObject = require(`./GetTablesAsTableObject`);
 
 function getTableDataAsRowArrays(path, options) {
     
@@ -16,6 +17,6 @@ function getTableDataAsRowArrays(path, options) {
 
     if (!doesHtmlHaveTableRows($)) return new Error(`Parse Error - No HTML table found`);
 
-    const tables = $('table').get();
+    const tables = getTablesAsTableObject($);
 }
 module.exports = getTableDataAsRowArrays;
