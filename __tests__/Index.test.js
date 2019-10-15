@@ -12,7 +12,7 @@ test(`Expect main fn to return 'true' when called with ${tablePage} [PLACEHOLDER
 test(`Throw Error on non-string path input`, async () => {
     async function run(input) {
         expect(
-            await tableParse(input)
+            tableParse(input).then().catch()
         ).toThrow(Error);
     }
 
@@ -26,7 +26,7 @@ test(`Throw Error on non-string path input`, async () => {
 test(`Throw Error on non-object options input`, async () => {
     async function run(input) {
         expect(
-            await tableParse(`https://www.google.com`, input)
+            tableParse(`https://www.google.com`, input).then().catch()
         ).toThrow(Error);
     }
 
