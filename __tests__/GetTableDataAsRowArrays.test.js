@@ -18,6 +18,68 @@ test(`Get a 'truthy' result from querying Google.com`, async () => {
     ).toBeTruthy();
 });
 
+test(`Get expected output from URL, single table`, async () => {
+    nock(`https://www.fakewebsite.com`)
+        .get(`/index.html`)
+        .replyWithFile(
+            200,
+            `./__mocks__/example.full-table.html`, 
+            { 'Content-Type': 'text/html' }
+        );
+
+    expect(
+        await getTableDataAsRowArrays(`https://www.fakewebsite.com/index.html`)
+    ).toStrictEqual(
+        { 0: rowArray }
+    );
+});
+
+test(`Get expected output from URL, multiple tables`, async () => {
+    nock(`https://www.fakewebsite.com`)
+        .get(`/index.html`)
+        .replyWithFile(
+            200,
+            `./__mocks__/example.full-table.multiple-tables.html`, 
+            { 'Content-Type': 'text/html' }
+        );
+
+    expect(
+        await getTableDataAsRowArrays(`https://www.fakewebsite.com/index.html`)
+    ).toStrictEqual(
+        { 0: rowArray, 1: rowArray }
+    );
+});
+
+test(`Return error when not finding HTML from URL`, async () => {
+    nock(`https://www.fakewebsite.com`)
+        .get(`/no-html.txt`)
+        .replyWithFile(
+            200,
+            `./__mocks__/example.no-html.txt`,
+            { 'Content-Type': 'text/plain' }
+        );
+
+    let res = await getTableDataAsRowArrays(`https://www.fakewebsite.com/no-html.txt`);    
+    expect(
+        res.toString()
+    ).toMatch(/No HTML Found$/i);
+});
+
+test(`Return error when not finding table in HTML from URL`, async () => {
+    nock(`https://www.fakewebsite.com`)
+        .get(`/no-table.html`)
+        .replyWithFile(
+            200,
+            `./__mocks__/example.no-table.html`,
+            { 'Content-Type': 'text/html' }
+        );
+
+    let res = await getTableDataAsRowArrays(`https://www.fakewebsite.com/no-table.html`);    
+    expect(
+        res.toString()
+    ).toMatch(/No HTML Table Found$/i);
+});
+
 test(`Get expected output from filepath, single table`, async () => {
     expect(
         await getTableDataAsRowArrays(`./__mocks__/example.full-table.html`)
@@ -32,4 +94,18 @@ test(`Get expected output from filepath, multiple tables`, async () => {
     ).toStrictEqual(
         { 0: rowArray, 1: rowArray }
     );
+});
+
+test(`Return error when not finding HTML from filepath`, async () => {
+    let res = await getTableDataAsRowArrays(`./__mocks/example.no-html.txt`);    
+    expect(
+        res.toString()
+    ).toMatch(/No HTML Found$/i);
+});
+
+test(`Return error when not finding a table in HTML from filepath`, async () => {
+    let res = await getTableDataAsRowArrays(`./__mocks__/example.no-table.html`);    
+    expect(
+        res.toString()
+    ).toMatch(/No HTML Table Found$/i);
 });
