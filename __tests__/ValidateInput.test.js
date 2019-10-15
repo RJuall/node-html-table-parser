@@ -6,7 +6,7 @@ test(`Throw error on invalid input`, () => {
             validateInput(input, type);
         }).toThrow(TypeError);
     };
-    run([], `string`);            // array
+    run([], `string`);            // array object
     run({}, `string`);            // object
     run(99, `string`);            // number
     run(true, `string`);          // boolean
