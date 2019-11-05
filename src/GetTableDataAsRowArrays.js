@@ -11,9 +11,9 @@ const splitAllTablesIntoRowArrays = require(`./SplitAllTablesIntoRowArrays`);
 
 async function getTableDataAsRowArrays(path) {
     
-    const html = isInputUrl(path) 
-        ? await getHtmlFromUrl(path) 
-        : getHtmlFromFilepath(path);
+    const html = !isInputUrl(path) 
+        ? getHtmlFromFilepath(path) 
+        : await getHtmlFromUrl(path);
 
     if(!isHtml(html)) return new Error(`Parse Error - No HTML found`);
     const $ = cheerio.load(minifyHtml(html));

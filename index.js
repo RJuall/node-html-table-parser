@@ -5,6 +5,7 @@ const mergeOptions = require(`./src/MergeOptions`);
 
 const getTableDataAsRowArrays = require(`./src/GetTableDataAsRowArrays`);
 
+// Define a 'toJSON()' method on a data object?
 async function tableParse (htmlPath, opt) {
     validateInput(htmlPath, `string`);
     const options = mergeOptions(defaultOptions, opt);

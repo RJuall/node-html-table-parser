@@ -36,3 +36,15 @@ test(`Throw Error on non-object options input`, async () => {
     run(null);
     run(() => {});
 });
+
+test(`Expect trying to read a directory to throw an Error`, async () => {
+    expect(
+        tableParse(`./__mocks__/empty-dir/`).then().catch()
+    ).toThrow(Error);
+});
+
+test(`Expect trying to read a non-existent file to throw an Error`, async () => {
+    expect(
+        tableParse(`./__mocks__/empty-dir/not-a-file.html`).then().catch()
+    ).toThrow(Error);
+});
